@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','Panel\IndexController@index')->middleware('auth')->name('panel');
+
+Route::get('auth', 'Auth\LoginController@index')->name('login')->middleware('guest');
+Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('auth', 'Auth\LoginController@login')->middleware('guest');
