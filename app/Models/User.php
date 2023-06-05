@@ -10,35 +10,14 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    const CLIENT_USER_TYPE = 0;
+    const ADMIN_USER_TYPE = 1;
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function BandwidthUsage()
+    {
+        return $this->hasOne(BandwidthUsage::class);
+    }
 }
