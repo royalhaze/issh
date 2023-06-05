@@ -10,6 +10,11 @@ class IndexController extends Controller
 {
     public function index()
     {
+        return view('panel.index');
+    }
+
+    public function dashboard_data()
+    {
         $data = [
             'cpu' => SystemInfoHelper::getCpuInfo(),
             'net' => SystemInfoHelper::getNetInfo(),
@@ -18,6 +23,6 @@ class IndexController extends Controller
             'ip' => SystemInfoHelper::getIpInfo()
         ];
 
-        return view('panel.index',compact('data'));
+        return response()->json($data);
     }
 }

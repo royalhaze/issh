@@ -29,7 +29,8 @@
                   </g>
                 </svg>
               </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">فرست</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">iSSH</span>
+            <span class="app-brand-text menu-text text-muted ms-2">v{{ env('APP_VERSION') }}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">

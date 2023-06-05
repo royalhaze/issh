@@ -1,0 +1,44 @@
+.vm--container {
+    z-index: 9999 !important;
+}
+
+.vm--modal {
+    overflow-y: auto !important;
+    width: 60% !important;
+    height: auto !important;
+    max-height: 60% !important;
+}
+
+#modalContainer {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(#00fffc, #00ff09);
+    border-radius: 50px;
+
+}
+
+@media (min-width: 900px) {
+    .vm--modal {
+        right: 20% !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .vm--modal {
+        right: 0 !important;
+        width: 100% !important;
+    }
+}
+
+.modal-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+

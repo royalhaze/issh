@@ -8,7 +8,7 @@
 
 <body>
 <!-- Layout wrapper -->
-<div class="layout-wrapper layout-content-navbar">
+<div id="app" class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
 
         <!-- Menu -->
