@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('panel','Panel\IndexController@index')->middleware('auth')->name('panel');
+Route::get('panel/{any}', 'Panel\IndexController@index')->where('any', '.*')->middleware('auth');
+
 
 Route::get('auth', 'Auth\LoginController@index')->name('login')->middleware('guest');
 Route::get('auth/logout', 'Auth\LoginController@logout')->name('logout');

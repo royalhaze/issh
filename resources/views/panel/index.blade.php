@@ -2,7 +2,9 @@
 
 @section('content')
     <!-- Content -->
-    <router-view></router-view>
+    <keep-alive>
+        <router-view></router-view>
+    </keep-alive>
     <!-- / Content -->
 @endsection
 @section('script')
