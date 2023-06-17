@@ -42,5 +42,13 @@ class Notification{
             text: text,
         });
     }
+
+    static swal_response(that,response){
+        that.$swal.fire({
+            icon: (response.data.status)?'success':'error',
+            title: (response.data.status)?'success':'error',
+            text: response.data.message,
+        });
+    }
 }
 export default Notification;

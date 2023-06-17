@@ -23,3 +23,5 @@ Route::post('auth', 'Auth\LoginController@login')->middleware('guest');
 
 
 Route::get('web-api/dashboard','Panel\IndexController@dashboard_data');
+Route::post('web-api/users/store','Panel\UsersController@store');
+Route::get('web-api/users','Panel\UsersController@index');

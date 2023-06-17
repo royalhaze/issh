@@ -25,7 +25,7 @@ class Notification{
         return toast.error(message);
     }
     static default_error(){
-        return toast.error('خطایی رخ داده لطفا دوباره تلاش کنید');
+        return toast.error('Something went wrong. please try again');
     }
     static response(response){
         if (response.data.status){
@@ -34,5 +34,6 @@ class Notification{
             return Notification.error(response.data.message);
         }
     }
+
 }
 export default Notification;

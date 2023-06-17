@@ -6,7 +6,7 @@
                     Users
                 </h4>
                 <div class="card-header-elements ms-auto">
-                    <button @click="create_new_user" type="button" class="btn btn-sm btn-success">
+                    <button @click="show_modal('new')" type="button" class="btn btn-sm btn-success">
                         <span class="tf-icon bx bx-plus bx-xs"></span> Create New
                     </button>
                 </div>
@@ -21,70 +21,35 @@
                         <th>Bandwidth Usage</th>
                         <th>Client Limit</th>
                         <th>Contact Info</th>
-                        <th>Client Limit</th>
                         <th>Date</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td><i class="align-middle fab fa-angular fa-lg text-danger me-3"></i> <strong>پروژه
-                            انگولار</strong></td>
-                        <td>استیو جابز</td>
+                    <tr v-for="user in users.data">
+                        <td><strong>
+                            {{user.id}}
+                        </strong></td>
+                        <td>      {{user.username}}</td>
                         <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="تونی استارک">
-                                    <img src="/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="بیل گیتس">
-                                    <img src="/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="دیوید بکهام">
-                                    <img src="/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                            </ul>
+<!--                            {{ }}-->
                         </td>
-                        <td><span class="badge bg-label-primary me-1">فعال</span></td>
                         <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                        class="bx bx-edit-alt me-1"></i> ویرایش</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        حذف</a>
-                                </div>
-                            </div>
+                            {{user.connection_limit}}
                         </td>
-                    </tr>
-                    <tr>
-                        <td><i class="align-middle fab fa-react fa-lg text-info me-3"></i> <strong>پروژه React</strong>
-                        </td>
-                        <td>بری الن</td>
                         <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="تونی استارک">
-                                    <img src="/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="بیل گیتس">
-                                    <img src="/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="دیوید بکهام">
-                                    <img src="/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                            </ul>
+                            <!--                            {{ }}-->
                         </td>
-                        <td><span class="badge bg-label-success me-1">اتمام یافته</span></td>
+                        <td>
+                            {{user.expire_date}}
+                        </td>
+                        <td v-if="user.status == 'active'">
+                            <span class="badge bg-label-success me-1">{{ user.status }}</span>
+                        </td>
+                        <td v-else>
+                            <span class="badge bg-label-danger me-1">{{ user.status }}</span>
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -93,87 +58,14 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="javascript:void(0);"><i
-                                        class="bx bx-edit-alt me-1"></i> ویرایش</a>
+                                        class="bx bx-edit-alt me-1"></i> Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        حذف</a>
+                                        Delete</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><i class="align-middle fab fa-vuejs fa-lg text-success me-3"></i> <strong>پروژه
-                            VueJs</strong></td>
-                        <td>تونی استارک</td>
-                        <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="تونی استارک">
-                                    <img src="/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="بیل گیتس">
-                                    <img src="/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="دیوید بکهام">
-                                    <img src="/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                            </ul>
-                        </td>
-                        <td><span class="badge bg-label-info me-1">زمان‌بندی شده</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                        class="bx bx-edit-alt me-1"></i> ویرایش</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        حذف</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="align-middle fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>پروژه
-                            بوت‌استرپ</strong>
-                        </td>
-                        <td>بیل گیتس</td>
-                        <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="تونی استارک">
-                                    <img src="/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="بیل گیتس">
-                                    <img src="/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    class="avatar avatar-xs pull-up" title="" data-bs-original-title="دیوید بکهام">
-                                    <img src="/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                                </li>
-                            </ul>
-                        </td>
-                        <td><span class="badge bg-label-warning me-1">در انتظار</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                        class="bx bx-edit-alt me-1"></i> ویرایش</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        حذف</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -186,7 +78,7 @@
                     <div class="text-center mb-4">
                         <h3 class="secondary-font">Create New User</h3>
                     </div>
-                    <form id="editUserForm" class="row g-3 fv-plugins-bootstrap5 fv-plugins-framework"
+                    <form :key="form_key" @submit.prevent="create_user" id="editUserForm" class="row g-3 fv-plugins-bootstrap5 fv-plugins-framework"
                           onsubmit="return false" novalidate="novalidate">
                         <div class="col-12 col-md-6 fv-plugins-icon-container">
                             <label class="form-label" for="username">Username *</label>
@@ -264,11 +156,17 @@
                             <label class="form-label" for="bandwidth">Bandwidth</label>
                             <input v-model="user.bandwidth" type="text" id="bandwidth" class="form-control"
                                    placeholder="0">
+                            <div id="defaultFormControlHelp" class="form-text">
+                               in GB unit , 0 = unlimited
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 fv-plugins-icon-container">
                             <label class="form-label" for="concurrent_users">Concurrent Users</label>
                             <input v-model="user.concurrent_users" type="text" id="concurrent_users" class="form-control"
                                    placeholder="0">
+                            <div id="defaultFormControlHelp2" class="form-text">
+                                0 = unlimited
+                            </div>
                         </div>
 
 
@@ -289,6 +187,9 @@
 </template>
 
 <script>
+import HttpService from "../../services/httpService/HttpService";
+import HttpValidator from "../../services/httpValidator/HttpValidator";
+import Notification from "../../services/notification/Toastr";
 export default {
     name: "UsersComponent",
     data() {
@@ -297,12 +198,18 @@ export default {
                 from_now:'true',
                 bandwidth: 0,
                 concurrent_users : 1,
-            }
+            },
+            form_key:0,
+            httpValidator : new HttpValidator(),
+            users:{}
         }
     },
     methods: {
-        create_new_user() {
-            this.$modal.show('new');
+        show_modal(name) {
+            this.$modal.show(name);
+        },
+        hide_modal(name) {
+            this.$modal.hide(name);
         },
         change_expire_type(){
             this.user.expire = null;
@@ -313,7 +220,48 @@ export default {
                 bandwidth: 0,
                 concurrent_users : 1,
             };
+            this.form_key++;
+        },
+        create_user(){
+            let loader = this.$loading.show({});
+
+            HttpService.post('/web-api/users/store',this.user).then(response => {
+                if (response.data.status){
+                    this.reset_form();
+                    this.hide_modal('new');
+                    this.$swal.fire({
+                        icon: 'success',
+                        title: 'User Created',
+                        text: response.data.message,
+                    });
+                }else {
+                    this.$swal.fire({
+                        icon: 'error',
+                        title: 'Error !',
+                        text: response.data.message,
+                    });
+                }
+
+            }).catch(error=>{
+                this.httpValidator.is_validation_error(error.response);
+            });
+
+            loader.hide();
+        },
+        get_data(){
+            let loading = this.$loading.show({});
+
+            HttpService.get('/web-api/users').then(response=>{
+                this.users = response.data.users;
+            }).catch(error=>{
+                Notification.default_error();
+            })
+
+            loading.hide();
         }
+    },
+    mounted() {
+        this.get_data();
     }
 }
 </script>
